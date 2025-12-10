@@ -1,0 +1,16 @@
+review_id,review_text,predicted_sentiment,suggestions,word_count
+1,One of the best game music soundtracks - for a game I didn't really play,positive,✓ Excellent review! Customer is satisfied | ✓ Continue maintaining this quality standard | ✓ Consider featuring this review for marketing,15
+2,Batteries died within a year ...,negative,Improve overall product quality and reliability | Enhance customer experience and satisfaction | Conduct quality assurance testing before shipping | Gather and act on customer feedback regularly,6
+3,"works fine, but Maha Energy is better",positive,✓ Excellent review! Customer is satisfied | ✓ Continue maintaining this quality standard | ✓ Consider featuring this review for marketing,7
+4,Great for the non-audiophile,positive,✓ Excellent review! Customer is satisfied | ✓ Continue maintaining this quality standard | ✓ Consider featuring this review for marketing,4
+5,DVD Player crapped out after one year,negative,Improve overall product quality and reliability | Enhance customer experience and satisfaction | Conduct quality assurance testing before shipping | Gather and act on customer feedback regularly,7
+6,Incorrect Disc,negative,Improve overall product quality and reliability | Enhance customer experience and satisfaction | Conduct quality assurance testing before shipping | Gather and act on customer feedback regularly,2
+7,DVD menu select problems,negative,Improve overall product quality and reliability | Enhance customer experience and satisfaction | Conduct quality assurance testing before shipping | Gather and act on customer feedback regularly,4
+8,Unique Weird Orientalia from the 1930's,positive,✓ Excellent review! Customer is satisfied | ✓ Continue maintaining this quality standard | ✓ Consider featuring this review for marketing,6
+9,"Not an ""ultimate guide""",positive,✓ Excellent review! Customer is satisfied | ✓ Continue maintaining this quality standard | ✓ Consider featuring this review for marketing,4
+10,Great book for travelling Europe,positive,✓ Excellent review! Customer is satisfied | ✓ Continue maintaining this quality standard | ✓ Consider featuring this review for marketing,5
+11,Not!,neutral,Review too short for analysis,1
+12,A complete Bust,negative,Improve overall product quality and reliability | Enhance customer experience and satisfaction | Conduct quality assurance testing before shipping | Gather and act on customer feedback regularly,3
+13,TRULY MADE A DIFFERENCE!,positive,✓ Excellent review! Customer is satisfied | ✓ Continue maintaining this quality standard | ✓ Consider featuring this review for marketing,4
+14,didn't run off of USB bus power,negative,Improve overall product quality and reliability | Enhance customer experience and satisfaction | Conduct quality assurance testing before shipping | Gather and act on customer feedback regularly,7
+15,Don't buy!,negative,Improve overall product quality and reliability | Enhance customer experience and satisfaction | Conduct quality assurance testing before shipping | Gather and act on customer feedback regularly,2

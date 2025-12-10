@@ -22,6 +22,12 @@ This project performs sentiment analysis on e-commerce product reviews to classi
 - Python 3.7 or higher
 - pip package manager
 
+### Setup
+1. Clone the repository:
+```bash
+git clone https://github.com/lakshmipravallika19145/ecommerce_review_sentiment_analysis.git
+cd ecommerce_review_sentiment_analysis
+```
 
 2. Install required dependencies:
 ```bash
@@ -82,6 +88,11 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contact
+- **Author**: Lakshmi Pravallika
+- **GitHub**: [@lakshmipravallika19145](https://github.com/lakshmipravallika19145)
+- **Project Link**: [https://github.com/lakshmipravallika19145/ecommerce_review_sentiment_analysis](https://github.com/lakshmipravallika19145/ecommerce_review_sentiment_analysis)
 
 ## Acknowledgments
 - Thanks to the open-source community for providing excellent NLP libraries

@@ -1,0 +1,64 @@
+# =====================
+# Python
+# =====================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.pickle
+
+# =====================
+# Flask / FastAPI / Web Apps
+# =====================
+instance/
+uploads/
+*.db
+*.sqlite3
+
+# =====================
+# ML Models & Artifacts
+# =====================
+models/*.pkl
+models/*.joblib
+models/*.h5
+models/*.pt
+models/*.onnx
+
+# =====================
+# Datasets
+# =====================
+data/*.csv
+data/*.json
+data/*.xlsx
+data/train.csv
+data/test.csv
+# Keep only small metadata files if needed
+!data/suggestions_from_test.json
+
+# =====================
+# Logs & temp files
+# =====================
+*.log
+*.tmp
+*.swp
+
+# =====================
+# Virtual Environments
+# =====================
+venv/
+env/
+.venv/
+ENV/
+
+# =====================
+# IDE / Editor
+# =====================
+.vscode/
+.idea/
+
+# =====================
+# OS generated files
+# =====================
+.DS_Store
+Thumbs.db

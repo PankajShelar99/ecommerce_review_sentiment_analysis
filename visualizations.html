@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - Sentiment Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        .stat-card.positive {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .stat-card.negative {
+            background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+        }
+
+        .stat-card.neutral {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .visualizations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .viz-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .viz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .viz-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            text-align: center;
+        }
+
+        .viz-card img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 60px 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+
+        .no-data h2 {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .no-data p {
+            color: #999;
+            margin-bottom: 25px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-size: 1.1em;
+        }
+
+        .btn-primary:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border-left: 4px solid #17a2b8;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid #28a745;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .visualizations {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Analytics Dashboard</h1>
+            <p class="subtitle">Visualizations of Your Sentiment Analysis Data</p>
+            <a href="/dashboard" class="nav-link">← Back to Dashboard</a>
+        </header>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% if summary_stats and summary_stats.total > 0 %}
+            <!-- Statistics Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">{{ summary_stats.total }}</div>
+                    <div class="stat-label">Total Predictions</div>
+                </div>
+                <div class="stat-card positive">
+                    <div class="stat-number">{{ summary_stats.positive }}</div>
+                    <div class="stat-label">Positive ({{ summary_stats.positive_pct }}%)</div>
+                </div>
+                <div class="stat-card negative">
+                    <div class="stat-number">{{ summary_stats.negative }}</div>
+                    <div class="stat-label">Negative ({{ summary_stats.negative_pct }}%)</div>
+                </div>
+                <div class="stat-card neutral">
+                    <div class="stat-number">{{ summary_stats.neutral }}</div>
+                    <div class="stat-label">Neutral ({{ summary_stats.neutral_pct }}%)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{{ summary_stats.avg_review_length }}</div>
+                    <div class="stat-label">Avg Words/Review</div>
+                </div>
+            </div>
+
+            <!-- Visualizations -->
+            <div class="visualizations">
+                {% if visualizations.sentiment_dist %}
+                <div class="viz-card">
+                    <h3>Sentiment Distribution</h3>
+                    <img src="{{ visualizations.sentiment_dist }}?v={{ range(1, 10000) | random }}" alt="Sentiment Distribution">
+                </div>
+                {% endif %}
+
+                {% if visualizations.sentiment_bars %}
+                <div class="viz-card">
+                    <h3>Sentiment Count</h3>
+                    <img src="{{ visualizations.sentiment_bars }}?v={{ range(1, 10000) | random }}" alt="Sentiment Bars">
+                </div>
+                {% endif %}
+
+                {% if visualizations.timeline %}
+                <div class="viz-card">
+                    <h3>Sentiment Over Time</h3>
+                    <img src="{{ visualizations.timeline }}?v={{ range(1, 10000) | random }}" alt="Timeline">
+                </div>
+                {% endif %}
+
+                {% if visualizations.review_length %}
+                <div class="viz-card">
+                    <h3>Review Length Distribution</h3>
+                    <img src="{{ visualizations.review_length }}?v={{ range(1, 10000) | random }}" alt="Review Length">
+                </div>
+                {% endif %}
+
+                {% if visualizations.length_by_sentiment %}
+                <div class="viz-card">
+                    <h3>Review Length by Sentiment</h3>
+                    <img src="{{ visualizations.length_by_sentiment }}?v={{ range(1, 10000) | random }}" alt="Length by Sentiment">
+                </div>
+                {% endif %}
+            </div>
+
+        {% else %}
+            <!-- No Data State -->
+            <div class="no-data">
+                <h2>📈 No Data Yet</h2>
+                <p>Start making predictions to see beautiful visualizations here!</p>
+                <a href="/predict" class="btn-primary">Make Your First Prediction</a>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

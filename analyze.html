@@ -1,0 +1,51 @@
+<!-- ==================== analyze.html ==================== -->
+<!-- Save as templates/analyze.html -->
+{% extends "base.html" %}
+{% block title %}Analyze Review{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body p-5">
+                <h2 class="mb-4">
+                    <i class="fas fa-search"></i> Analyze Product Review
+                </h2>
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Enter Review Text</label>
+                        <textarea class="form-control" name="review_text" rows="6"
+                                  placeholder="Paste your product review here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-custom">
+                        <i class="fas fa-chart-line"></i> Analyze Sentiment
+                    </button>
+                </form>
+
+                {% if result %}
+                <div class="mt-5">
+                    <h4>Analysis Result</h4>
+                    <div class="card sentiment-{{ result.sentiment|lower }}">
+                        <div class="card-body">
+                            <h3 class="text-center">
+                                <i class="fas fa-{{ 'smile' if result.sentiment == 'Positive' else 'frown' if result.sentiment == 'Negative' else 'meh' }}"></i>
+                                {{ result.sentiment }}
+                            </h3>
+                            <p class="text-center mb-0">
+                                Confidence: {{ "%.1f"|format(result.confidence) }}%
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <h6>Review Text:</h6>
+                            <p>{{ result.text }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

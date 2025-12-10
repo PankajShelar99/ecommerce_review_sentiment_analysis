@@ -1,0 +1,17 @@
+{
+  "positive": [
+    "Great review! Consider highlighting specific features customers loved.",
+    "Positive feedback received. Use this to identify your product strengths.",
+    "Excellent rating. Share these testimonials on your marketing materials."
+  ],
+  "negative": [
+    "Address the specific issues mentioned by the customer.",
+    "Consider improving product quality based on this feedback.",
+    "Offer customer support to resolve the mentioned problems."
+  ],
+  "neutral": [
+    "The review is neutral. Consider asking for more specific feedback.",
+    "Mixed feedback received. Look for patterns across multiple reviews.",
+    "Neutral rating. Monitor for trends that could become positive or negative."
+  ]
+}

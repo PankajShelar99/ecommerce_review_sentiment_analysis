@@ -1,0 +1,7 @@
+{
+  "model_name": "Logistic Regression",
+  "accuracy": 0.8464153584641536,
+  "features": 8000,
+  "training_samples": 40000,
+  "test_samples": 10001
+}
